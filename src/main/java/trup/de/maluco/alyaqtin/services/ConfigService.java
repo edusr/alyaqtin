@@ -1,8 +1,5 @@
 package trup.de.maluco.alyaqtin.services;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -25,11 +22,9 @@ public class ConfigService {
 
 		try {
 
-
 			ConfigFile configFile = new ConfigFile();
 			ZuulConfig zuulConfig = new ZuulConfig();
 			
-
 			EurekaConfig eurekaConfig = new EurekaConfig();
 			EurekaClientConfig eurekaClientConfig = new EurekaClientConfig();
 
@@ -37,15 +32,17 @@ public class ConfigService {
 
 			eurekaConfig.setClient(eurekaClientConfig);
 
-			route.setPath("/cadastro/**");
-			route.setUrl("http://stst.peixoto.com.br:28080/cadastro/pxt-rest/cadastroRestService");
-			route.setSensitive_headers("Cookie,Set-Cookie");
+//			route.setPath("/cadastro/**");
+//			route.setUrl("http://stst.peixoto.com.br:28080/cadastro/pxt-rest/cadastroRestService");
+//			route.setSensitive_headers("Cookie,Set-Cookie");
 
 			configFile.setZuul(zuulConfig);
 			configFile.setEureka(eurekaConfig);
-			Map<String, Route> map = new HashMap<>();
-			map.put("cadastro", route);
-			zuulConfig.setRoutes(map);
+			
+			
+			if(!configFile.getZuul().getRoutes().containsKey(nameRoute)){
+				configFile.getZuul().getRoutes().put(nameRoute, route);
+			}
 
 			// Write object as YAML string
 			String yaml = mapper.writeValueAsString(configFile).replaceAll("\"", "");
