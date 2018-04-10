@@ -14,4 +14,11 @@ public class ZuulConfig {
 		this.routes = routes;
 	}
 
+	@Override
+	public String toString() {
+		return "ZuulConfig [routes=" + routes + "]";
+	}
+	
+	
+
 }

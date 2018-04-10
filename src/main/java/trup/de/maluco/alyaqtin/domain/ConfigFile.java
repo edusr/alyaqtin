@@ -24,4 +24,11 @@ public class ConfigFile implements Serializable {
 		this.eureka = eureka;
 	}
 
+	@Override
+	public String toString() {
+		return "ConfigFile [zuul=" + zuul + ", eureka=" + eureka + "]";
+	}
+	
+	
+
 }

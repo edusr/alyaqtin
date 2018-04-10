@@ -21,4 +21,11 @@ public class EurekaClientConfig {
 		this.serviceUrl = serviceUrl;
 	}
 
+	@Override
+	public String toString() {
+		return "EurekaClientConfig [enable=" + enable + ", serviceUrl=" + serviceUrl + "]";
+	}
+	
+	
+
 }

@@ -30,4 +30,11 @@ public class Route {
 		this.sensitive_headers = sensitive_headers;
 	}
 
+	@Override
+	public String toString() {
+		return "Route [path=" + path + ", url=" + url + ", sensitive_headers=" + sensitive_headers + "]";
+	}
+	
+	
+
 }
